@@ -47,3 +47,28 @@ $('#el1-jquery').pressure(block);
 $('#el3-jquery').pressure(block, {only: 'touch'});
 
 });
+
+Pressure.set('#el1-jquery', {
+  start: function(event){
+    // this is called on force start
+  },
+  end: function(){
+    // this is called on force end
+  },
+  startDeepPress: function(event){
+    // this is called on "force click" / "deep press", aka once the force is greater than 0.5
+    document.getElementById('mytextarea').innerHTML = "Pressure high";
+  },
+  endDeepPress: function(){
+    // this is called when the "force click" / "deep press" end
+  },
+  change: function(force, event){
+    document.getElementById('mytextarea').innerHTML = "Pressure change";
+    // this is called every time there is a change in pressure
+    // 'force' is a value ranging from 0 to 1
+  },
+  unsupported: function(){
+    // NOTE: this is only called if the polyfill option is disabled!
+    // this is called once there is a touch on the element and the device or browser does not support Force or 3D touch
+  }
+});
