@@ -16,13 +16,11 @@ var block = {
     this.style.width = Pressure.map(force, 0, 1, 200, 300) + 'px';
     this.innerHTML = force;
     console.log('change', force);
-    document.getElementById('mytextarea').innerHTML = "Pressure change";
   },
 
   startDeepPress: function(event){
     console.log('start deep press', event);
     this.style.backgroundColor = '#FF0040';
-    document.getElementById('mytextarea').innerHTML = "Pressure high";
   },
 
   endDeepPress: function(){
