@@ -40,17 +40,72 @@ var block = {
   }
 }
 
+var sforce = 0;
+var cforce = 0;
+
+var block2 = {
+  start: function(event){
+    console.log('start', event);
+  },
+
+  change: function(force, event){
+    // event.preventDefault();
+    document.getElementById("demo").innerHTML = force;
+    console.log('change', force);
+	cforce = force    
+  },
+
+  startDeepPress: function(event){
+    console.log('start deep press', event);
+    
+  },
+
+  endDeepPress: function(){
+    console.log('end deep press');
+    
+  },
+
+  end: function(){
+    console.log('end');
+    sforce = sforce + cforce
+    document.getElementById("demo").innerHTML = sforce;
+  },
+
+  unsupported: function(){
+    console.log(this);
+    document.getElementById("demo").innerHTML = 'Your device / browser does not support this :(';
+  }
+}
+
 Pressure.set(document.querySelectorAll('#el1'), block);
-Pressure.set($('#el2'), block, {only: 'mouse', polyfill: true, polyfillSpeedUp: 5000, polyfillSpeedDown: 2000});
-Pressure.set('#el3', block, {only: 'touch'});
 
 $('#el1-jquery').pressure(block);
-$('#el2-jquery').pressure(block, {only: 'mouse'});
-$('#el3-jquery').pressure(block, {only: 'touch'});
-$('#el4-jquery').pressure(block, {only: 'pointer'});
 
-$('img').pressure({
-  change: function(force, event){
-    console.log(force);
-  }
-});
+Pressure.set(document.querySelectorAll('#el11'), block2);
+Pressure.set(document.querySelectorAll('#el12'), block2);
+Pressure.set(document.querySelectorAll('#el13'), block2);
+Pressure.set(document.querySelectorAll('#el14'), block2);
+Pressure.set(document.querySelectorAll('#el15'), block2);
+Pressure.set(document.querySelectorAll('#el16'), block2);
+Pressure.set(document.querySelectorAll('#el17'), block2);
+Pressure.set(document.querySelectorAll('#el18'), block2);
+Pressure.set(document.querySelectorAll('#el19'), block2);
+Pressure.set(document.querySelectorAll('#el10'), block2);
+Pressure.set(document.querySelectorAll('#el1s'), block2);
+Pressure.set(document.querySelectorAll('#el1p'), block2);
+
+
+$('#el11-jquery').pressure(block2);
+$('#el12-jquery').pressure(block2);
+$('#el13-jquery').pressure(block2);
+$('#el14-jquery').pressure(block2);
+$('#el15-jquery').pressure(block2);
+$('#el16-jquery').pressure(block2);
+$('#el17-jquery').pressure(block2);
+$('#el18-jquery').pressure(block2);
+$('#el19-jquery').pressure(block2);
+$('#el10-jquery').pressure(block2);
+$('#el1s-jquery').pressure(block2);
+$('#el1p-jquery').pressure(block2);
+
+
